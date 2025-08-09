@@ -78,3 +78,8 @@ This repository contains a RISC‑V processor implemented in Verilog with a clas
 
 ## Notes
 - The Vivado project artifacts (.runs/.sim/.gen, etc.) are intentionally excluded via `.gitignore`. Only source RTL, testbench, and constraints are tracked.
+
+## Achievements
+- Secured the Runner‑Up position for designing a 10T SRAM Cell, conducted by Jadavpur University (2025)
+- Awarded the Best Project Award for a 5‑stage pipelined RISC‑V Processor with Floating‑Point Unit (Final‑year B.Tech project, 2025)
+- Selected among the Top 10 Finalists for the Open‑Source RISC‑V Design Challenge in VDAT CircuitPreneur 2025 (pan‑India competition promoting silicon innovation)
