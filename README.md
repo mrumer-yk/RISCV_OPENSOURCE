@@ -1,5 +1,9 @@
 ﻿# RISC-V 5‑Stage Pipelined Core (Vivado Project)
 
+<p align="center">
+  <img src="docs/images/processor_architecture.png" alt="Processor Architecture" width="720" />
+</p>
+
 This repository contains a RISC‑V processor implemented in Verilog with a classic 5‑stage pipeline and integrated SPI master and floating‑point support.
 
 ## Features
@@ -31,6 +35,14 @@ This repository contains a RISC‑V processor implemented in Verilog with a clas
 ## SPI Integration
 - SPI master provided by `SPI_Master` and `SPI_Master_With_Single_CS` (`spi2.v` and `spimodule.v`).
 - Memory stage (`memory_cycle.v`) connects the SPI signals and exposes a `spi_finish` handshake back to the front‑end (`fetchdecodetop.v`).
+
+### Additional Diagrams
+<p align="center">
+  <img src="docs/images/spi_diagram.png" alt="SPI Diagram" width="560" />
+</p>
+<p align="center">
+  <img src="docs/images/hazard.png" alt="Hazard Unit Diagram" width="560" />
+</p>
 
 ## Floating‑Point
 - `ALU_Floating_Point` in `ALU float.v` supports add/sub, multiply, divide, and an iteration block.
