@@ -65,5 +65,16 @@ This repository contains a RISC‑V processor implemented in Verilog with a clas
 - On reset, forwarding selects default to `2'b00`.
 - Note: The provided hazard unit focuses on forwarding. If you add an FFT or other long‑latency co‑processor, manage start/done handshakes (e.g., via `fft_s`/`fft_e`) and consider inserting stalls if your co‑processor introduces multi‑cycle latency on register dependencies not covered by forwarding.
 
+## Parallel Execution Model (CPU + Co‑Processor)
+- The main RISC‑V pipeline and the co‑processors (e.g., FFT via `reg1.v`, SPI master in `memory_cycle.v`) are designed to run in parallel.
+- Co‑processor interactions are decoupled using simple handshakes:
+  - Start from software (e.g., write to a register that asserts `fft_s`).
+  - Completion signaled back asynchronously (e.g., `fft_e` sets a flag by writing `x2 = 1`).
+- While the co‑processor runs, the CPU pipeline continues executing independent instructions. Software should:
+  - Launch the co‑processor, then execute unrelated work.
+  - Poll the completion flag (or use an interrupt extension) before consuming results.
+- If your workload requires the CPU to consume the co‑processor result immediately, insert a software wait (poll) or implement a pipeline stall around the dependency.
+- The SPI master similarly operates independently and exposes `spi_finish` so the front‑end can coordinate when needed, without blocking the pipeline by default.
+
 ## Notes
 - The Vivado project artifacts (.runs/.sim/.gen, etc.) are intentionally excluded via `.gitignore`. Only source RTL, testbench, and constraints are tracked.
