@@ -1,0 +1,53 @@
+﻿# Vivado/Xilinx generated and build outputs
+*.jou
+*.log
+*.str
+*.pb
+*.wdb
+*.wcfg
+*.wdf
+*.rpt
+*.rpx
+*.xml
+*.db
+*.dcp
+*.tcl
+*.vds
+*.ini
+*.bak
+*.exe
+*.bat
+*.sh
+*.svtype
+*.type
+*.rlx
+*.mem
+*.reloc
+*.xdbg
+*.xpr.user
+
+# Vivado project subfolders to exclude
+*/.Xil/**
+*.cache/**
+*.hw/**
+*.ip_user_files/**
+*.gen/**
+*.runs/**
+*.sim/**
+
+# By default ignore everything under project sources
+modified risc v.srcs/**
+
+# Re-include RTL, constraints, and testbench we want to track
+!modified risc v.srcs/sources_1/
+!modified risc v.srcs/sources_1/new/
+!modified risc v.srcs/sources_1/new/*.v
+!modified risc v.srcs/sim_1/
+!modified risc v.srcs/sim_1/new/
+!modified risc v.srcs/sim_1/new/tb.v
+!modified risc v.srcs/constrs_1/
+!modified risc v.srcs/constrs_1/new/
+!modified risc v.srcs/constrs_1/new/dd.xdc
+
+# Optional: exclude block design/UIs
+modified risc v.srcs/sources_1/bd/**
